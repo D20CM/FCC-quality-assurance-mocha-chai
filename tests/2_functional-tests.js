@@ -69,8 +69,14 @@ suite("Functional Tests", function () {
 });
 
 const Browser = require("zombie");
+Browser.site = "https://fcc-qa-mocha-chai.herokuapp.com/";
 
 suite("Functional Tests with Zombie.js", function () {
+  const browser = new Browser();
+  suiteSetup(function (done) {
+    return browser.visit("/", done);
+  });
+
   this.timeout(5000);
 
   suite("Headless browser", function () {
